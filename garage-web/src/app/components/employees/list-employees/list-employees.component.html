@@ -1,0 +1,19 @@
+<div class="container">
+    <div class="card mt-3 border-secondary" *ngFor="let mechanic of mechanics">
+        <div class="card-body text-sm">
+            <div class="row">
+                <div class="col-md-10">
+                    <ul class="list-unstyled">
+                        <li class="font-weight-bold">Mechanic Id :<span class="font-weight-normal">  {{mechanic.id}}</span></li>
+                        <li class="font-weight-bold">Name : <span class="font-weight-normal"> {{mechanic.full_name}}</span></li>
+                        <li class="font-weight-bold">Mobile : <span class="font-weight-normal">  {{mechanic.mobile}}</span></li>
+                        <li class="font-weight-bold">Email : <span class="font-weight-normal"> {{mechanic.email}}</span></li>
+                    </ul>
+                </div>
+                <div class="col-md-1 text-center">
+                    <button class="btn btn-success w-auto m-2" (click)="editEmployee(mechanic)">Modify</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

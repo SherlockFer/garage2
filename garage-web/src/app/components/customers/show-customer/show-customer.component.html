@@ -1,0 +1,18 @@
+<h2>Customer</h2>
+<table class="table table-hover">
+    <tbody *ngIf="!isLoading">
+        <tr>
+            <th>Name:</th>
+            <td> {{customer.full_name}}</td>
+        </tr>
+        <tr>
+            <th>Email:</th>
+            <td> {{customer.email}}</td>
+        </tr>
+        <tr>
+            <th>Mobile:</th>
+            <td> {{customer.mobile}}</td>
+        </tr>
+    </tbody>
+    <a routerLink="/customers"><button class="btn btn-success pull-right">Back</button></a>
+</table>

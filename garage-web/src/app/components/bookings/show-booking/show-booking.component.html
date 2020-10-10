@@ -1,0 +1,124 @@
+<!-- header -->
+<div class="container  py-4">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card border border-secondary border-top-success">
+                <div class="card-header font-weight-bold bg-white text-center">
+                    <h4>Invoice</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <ul class="list-unstyled" *ngIf="!isLoading">
+                                <li class="text-muted">Bill to:</li>
+                                <li>{{customer?.full_name}}</li>
+                                <li>mobile : {{customer?.mobile}}</li>
+                                <li>email : {{customer?.email}}</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <ul class="list-unstyled" *ngIf="!isLoading">
+                                <li class="text-muted">Vehicle:</li>
+                                <li>{{booking.vehicle_number_plate}}</li>
+                                <li>{{booking.vehicle_model}}</li>
+                                <li>{{booking.vehicle_brand}}</li>
+                                <li>{{vehicle_engines[booking.vehicle_engine]}} -
+                                        {{vehicle_types[booking.vehicle_type]}}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Service -->
+<div class="container  py-4">
+    <div class="row">
+        <div class="col-md-8" *ngIf="!isLoading">
+            <div class="card border border-secondary">
+                <div class="card-header font-weight-bold bg-white text-left">
+                    Main Service
+                </div>
+                <div class="card-body">
+                    <table class="table table-borderless">
+                        <tr>
+                            <td>{{service.name}}</td>
+                            <td class="text-right">{{service.price | currency :'EUR':'symbol':'1.2-2'}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Service details -->
+<div *ngIf="booking?.extra_service?.length > 0">
+    <div class="container  py-4">
+        <div class="row">
+            <div class="col-md-8" *ngIf="!isLoading">
+                <div class="card border border-secondary">
+                    <div class="card-header font-weight-bold bg-white text-left">
+                        Additional services
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-borderless">
+                            <tr *ngFor="let extra_service of booking.extra_service">
+                                <td>{{extra_service.name}}</td>
+                                <td class="text-right">
+                                    {{ extra_service.price | currency :'EUR':'symbol':'1.2-2'   }}
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Parts -->
+<div *ngIf="booking?.parts?.length > 0">
+    <div class="container  py-4">
+        <div class="row">
+            <div class="col-md-8" *ngIf="!isLoading">
+                <div class="card border border-secondary">
+                    <div class="card-header font-weight-bold bg-white text-left">
+                        Autoparts
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-borderless">
+                            <tr *ngFor="let parts of booking.parts">
+                                <td>{{parts.name}}</td>
+                                <td class="text-right">
+                                    {{ (parts.price) | currency :'EUR':'symbol':'1.2-2'   }}</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Total -->
+<div class="container  py-4">
+    <div class="row">
+        <div class="col-md-8" *ngIf="!isLoading">
+            <div class="card border border-secondary border-bottom-success">
+                <div class="card-body">
+                    <table class="table table-borderless">
+                        <tr>
+                            <td class="font-weight-bold">Total</td>
+                            <td class="text-right  font-weight-bold">
+                                {{ booking.total | currency :'EUR':'symbol':'1.2-2'   }}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

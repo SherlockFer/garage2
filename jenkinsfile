@@ -1,0 +1,32 @@
+pipeline{
+    agent any 
+    
+    triggers { pollSCM '*/5 * * * *' }
+    
+    options {
+        disableConcurrentBuilds()
+        buildDiscarder(logRotator(numToKeepStr: '5'))
+    }
+    
+    stages{       
+        
+        stage('Git: Clone') { 
+            steps{
+                sh "test -e .git && git clean -fdx 2>/dev/null || true"                    
+                git credentialsId: "jenkins-rsa", branch: "master", url: "git@github.com:SherlockFer/garage-2.git"        
+            }
+        } 
+        
+        stage('Mvn: Compile package') { 
+            steps{                    
+                sh "mvn clean compile package"              
+            }
+        }  
+        
+        stage('Docker: Boot: Garage') { 
+            steps{                    
+                sh "make up"              
+            }
+        }     
+    }
+}

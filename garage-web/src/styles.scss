@@ -1,0 +1,65 @@
+// For changes in Bootstrap see: https://github.com/twbs/bootstrap-sass/blob/master/assets/stylesheets/bootstrap/_variables.scss
+
+$primary: #0B41AE;
+$secondary: #1A88DC;
+$success: #F1C933;
+$btn-success-color: #073590;
+//$body-color: #FFFFFF !default;
+$font-size-base: 1.10rem;
+$font-family-base: "Roboto", sans-serif;
+
+
+@import  "../node_modules/bootstrap/scss/bootstrap";
+@import  "../node_modules/bootstrap-select/dist/css/bootstrap-select.min.css";
+@import  "../node_modules/font-awesome/css/font-awesome.css";
+@import  "../node_modules/ngx-toastr/toastr.css";
+@import  "../node_modules/roboto-fontface/css/roboto/roboto-fontface.css";
+
+
+// Success borders
+.border-bottom-success{
+  border-bottom:3px solid $success !important;
+}
+
+.border-top-success{
+  border-top:3px solid $success !important;
+}
+
+// For big buttons
+.btn-block {
+  padding: 5% 0; 
+}
+
+// Changing the color of the text for success button
+.btn-success {
+  color: $btn-success-color !important;
+}
+
+// Form labels 
+.form-label-sm {
+  padding-top: calc(0.25rem + 1px);
+  padding-bottom: calc(0.25rem + 1px);
+  font-size: 0.95rem;
+  line-height: 1.0;
+}
+
+// Icons: https://fontawesome.com/v4.7.0/icons/
+i {
+  display: inline-block;
+  margin-right: 0.5em;
+}
+
+.text-sm{
+  font-size: 0.95rem;
+}
+
+// Font size for Footer
+footer {
+  font-size: 0.8rem;
+}
+
+#vehicle_type, #vehicle_engine, #status, #mechanic, #base_service{
+  font-size: 1.375rem;
+  height: calc(1.5em + 1rem + 2px);
+  -webkit-appearance:menulist;
+}

@@ -1,0 +1,134 @@
+<div class="container">
+    <div *ngIf="curr_bookings?.length > 0">
+        <h5 class="my-3">Incoming</h5>
+        <div class="card mt-3 border-secondary" *ngFor="let booking of curr_bookings">
+            <div class="card-header text-sm">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="font-weight-bold">Booking #{{booking.id}}</span>
+                    </div>
+                    <div class="col-md-6 text-md-right">
+                        <span class="font-weight-bold"> {{booking_status[booking.status]}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body text-sm">
+                <div class="row">
+                    <div class="col-md-5">
+                        <ul class="list-unstyled">
+                            <li class="font-weight-bold">{{booking.base_service.name}}</li>
+                            <li class="text-muted">{{booking.date}}</li>
+                            <li class="text-muted">{{booking.customer.full_name}}</li>
+                            <li class="text-muted"><small>{{booking.comments}}</small></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-5">
+                        <ul class="list-unstyled">
+                            <li class="font-weight-bold">{{booking.vehicle_number_plate}}</li>
+                            <li class="text-muted">{{booking.vehicle_model}}</li>
+                            <li class="text-muted">{{booking.vehicle_brand}}</li>
+                            <li class="text-muted">{{vehicle_engines[booking.vehicle_engine]}} -
+                                {{vehicle_types[booking.vehicle_type]}}</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-2 text-center">
+                        <button class="btn btn-success w-auto m-2" (click)="editBooking(booking)">Modify</button>
+                        <button class="btn btn-secondary w-auto m-2" (click)="invoice(booking)"
+                            [hidden]='checkPolicy'>Invoice</button>
+                        <button class="btn btn-danger w-auto m-2" (click)="delete(booking)">Delete&nbsp;</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="on_site_booking?.length > 0">
+        <h5 class="my-3">On site</h5>
+        <div class="card mt-3 border-secondary" *ngFor="let booking of on_site_booking">
+            <div class="card-header text-sm">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="font-weight-bold">Booking #{{booking.id}}</span>
+                    </div>
+                    <div class="col-md-6 text-md-right">
+                        <span class="font-weight-bold"> {{booking_status[booking.status]}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body text-sm">
+                <div class="row">
+                    <div class="col-md-5">
+                        <ul class="list-unstyled">
+                            <li class="font-weight-bold">{{booking.base_service.name}}</li>
+                            <li class="text-muted">{{booking.date}}</li>
+                            <li class="text-muted">{{booking.customer.full_name}}</li>
+                            <li class="text-muted"><small>{{booking.comments}}</small></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-5">
+                        <ul class="list-unstyled">
+                            <li class="font-weight-bold">{{booking.vehicle_number_plate}}</li>
+                            <li class="text-muted">{{booking.vehicle_model}}</li>
+                            <li class="text-muted">{{booking.vehicle_brand}}</li>
+                            <li class="text-muted">{{vehicle_engines[booking.vehicle_engine]}} -
+                                {{vehicle_types[booking.vehicle_type]}}</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-2 text-center">
+                        <button class="btn btn-success w-auto m-2" (click)="editBooking(booking)"
+                            [hidden]='checkPolicy'>Modify</button>
+                        <button class="btn btn-secondary w-auto m-2" (click)="invoice(booking)">Invoice</button>
+                        <button class="btn btn-danger w-auto m-2" (click)="delete(booking)"
+                            [hidden]='checkPolicy'>Delete&nbsp;</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="past_bookings?.length > 0">
+            <h5 class="my-3">Past bookings</h5>
+            <div class="card mt-3" *ngFor="let booking of past_bookings">
+                <div class="card-header text-sm">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="font-weight-bold">Booking #{{booking.id}}</span>
+                        </div>
+                        <div class="col-md-6 text-md-right">
+                            <span class="font-weight-bold"> {{booking_status[booking.status]}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body text-sm">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <ul class="list-unstyled">
+                                <li class="font-weight-bold">{{booking.base_service.name}}</li>
+                                <li class="text-muted">{{booking.date}}</li>
+                                <li class="text-muted">{{booking.customer.full_name}}</li>
+                                <li class="text-muted"><small>{{booking.comments}}</small></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-5">
+                            <ul class="list-unstyled">
+                                <li class="font-weight-bold">{{booking.vehicle_number_plate}}</li>
+                                <li class="text-muted">{{booking.vehicle_model}}</li>
+                                <li class="text-muted">{{booking.vehicle_brand}}</li>
+                                <li class="text-muted">{{vehicle_engines[booking.vehicle_engine]}} -
+                                    {{vehicle_types[booking.vehicle_type]}}</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-2 text-center">
+                            <button class="btn btn-success w-auto m-2" (click)="editBooking(booking)"
+                                [hidden]='checkPolicy'>Modify</button>
+                            <button class="btn btn-secondary w-auto m-2" (click)="invoice(booking)">Invoice</button>
+                            <button class="btn btn-danger w-auto m-2" (click)="delete(booking)"
+                                [hidden]='checkPolicy'>Delete&nbsp;</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

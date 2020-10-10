@@ -1,0 +1,57 @@
+<nav class="navbar navbar-expand-md bg-primary navbar-dark border-bottom-success">
+  <a class="navbar-brand" routerLink="/">
+    <img src="../assets/logo.svg" alt="">
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarCollapse">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item" *ngIf="authService.isLoggedIn()" data-toggle="collapse" data-target=".navbar-collapse.show">
+        <a routerLink="/my-bookings/new" class="nav-link text-nowrap">
+          Book a Service
+          
+        </a>
+      </li>
+      <li class="nav-item" *ngIf="authService.isLoggedIn()" data-toggle="collapse" data-target=".navbar-collapse.show">
+        <a routerLink="/my-bookings" class="nav-link text-nowrap">
+          All Bookings
+        </a>
+      </li>
+      <li class="nav-item" *ngIf="authService.isAdmin()" data-toggle="collapse" data-target=".navbar-collapse.show">
+        <a routerLink="/admin/customers" class="nav-link text-nowrap">
+          All Users
+        </a>
+      </li>
+      <li class="nav-item" *ngIf="authService.isAdmin()" data-toggle="collapse" data-target=".navbar-collapse.show">
+        <a routerLink="/admin/employees" class="nav-link text-nowrap">
+          All Mechanics
+        </a>
+      </li>
+    </ul>
+    <ul class="navbar-nav">
+        <li class="nav-item" *ngIf="authService.isLoggedIn()" data-toggle="collapse" data-target=".navbar-collapse.show">
+            <a class="nav-link text-nowrap">
+              {{authService.getUserName()}}
+            </a>
+          </li>
+      <li class="nav-item" *ngIf="!authService.isLoggedIn()" data-toggle="collapse" data-target=".navbar-collapse.show">
+        <a routerLink="/login" class="nav-link text-nowrap">
+          Log in
+        </a>
+      </li>
+      <li class="nav-item" (click)="logout()" *ngIf="authService.isLoggedIn()" data-toggle="collapse"
+        data-target=".navbar-collapse.show">
+        <a href="#" class="nav-link text-nowrap">
+          Log out
+        </a>
+      </li>
+      <li class="nav-item" *ngIf="!authService.isLoggedIn()" data-toggle="collapse" data-target=".navbar-collapse.show">
+        <a routerLink="/sign-up" class="nav-link text-nowrap">
+          Sign up
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>

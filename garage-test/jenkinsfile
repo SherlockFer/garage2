@@ -1,0 +1,34 @@
+pipeline{
+    agent any 
+    
+    stages{       
+        
+        stage('Git: Clone') { 
+            steps{
+                sh "test -e .git && git clean -fdx 2>/dev/null || true"                    
+                git credentialsId: "jenkins-rsa", branch: "master", url: "git@github.com:SherlockFer/garage-2.git"              
+            }
+        } 
+        
+        stage('Run test Karate'){
+            steps{            
+                sh "cd garage-test && java -jar /opt/karate/karate-0.9.6.jar --env=docker booking.feature user.feature part.feature product.feature"
+            }
+        }
+    }
+
+    post {
+        always {
+            publishHTML(
+                target: [
+                    allowMissing: false,
+                    alwaysLinkToLastBuild: false,
+                    keepAll: true,
+                    reportDir: "garage-test/target/cucumber-html-reports",
+                    reportFiles: 'overview-features.html',
+                    reportName: "Report"
+                ]
+            ) 
+        }
+    }
+}
