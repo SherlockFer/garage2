@@ -16,3 +16,5 @@ export NVM_DIR="$HOME/.nvm"
 nvm install 10.16.0
 npm install -g yarn
 
+https://github.com/SherlockFer/garage2/blob/main/garage-architecture.png
+
