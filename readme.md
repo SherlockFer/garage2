@@ -1,3 +1,7 @@
+
+![alt text](https://github.com/SherlockFer/garage2/blob/main/garage-architecture_v2.png)
+![alt text](https://github.com/SherlockFer/garage2/blob/main/garage-architecture.png)
+
 # Setup on MAC
 
 ## Setup NODE 10.16
@@ -15,6 +19,6 @@ export NVM_DIR="$HOME/.nvm"
 -- Restart your bash
 nvm install 10.16.0
 npm install -g yarn
-![alt text](https://github.com/SherlockFer/garage2/blob/main/garage-architecture.png)
-![alt text](https://github.com/SherlockFer/garage2/blob/main/garage-architecture_v2.pdf)
+
+
 
