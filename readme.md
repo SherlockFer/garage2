@@ -1,8 +1,15 @@
-#Update 10 October 2020
-#Adding mock services
-#Adding mitmproxy
-#Adding scheduler
-#Adding cronos
+0. Update 10 October 2020
+
+2. Adding mock services
+
+3. Adding mitmproxy
+
+4. Adding scheduler
+
+5. Adding cronos
+
+# Architecture
+
 ![alt text](https://github.com/SherlockFer/garage2/blob/main/garage-architecture_v2.png)
 
 # Setup on MAC
